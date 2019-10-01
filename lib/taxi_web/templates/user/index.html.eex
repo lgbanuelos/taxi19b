@@ -9,12 +9,14 @@
     </tr>
   </thead>
   <tbody>
-<%= for user <- @users do %>
+<%= Enum.map(@users, fn user -> %>
     <tr>
       <td><%= user.name %></td>
       <td><%= user.username %></td>
       <td><%= user.password %></td>
     </tr>
-<% end %>
+<% end) %>
   </tbody>
 </table>
+
+<span><%= link "New user", to: Routes.user_path(@conn, :new) %></span>
